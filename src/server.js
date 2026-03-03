@@ -8,6 +8,11 @@ app.use(cors());
 
 let currentOTP = null;
 
+// Route to HTML file
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: "./public" });
+});
+
 // Generate OTP
 app.get("/generate-otp", (req, res) => {
   currentOTP = Math.floor(1000 + Math.random() * 9000).toString(); // 4-digit OTP

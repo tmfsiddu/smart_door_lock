@@ -8,9 +8,14 @@ app.use(cors());
 
 let currentOTP = null;
 
-// Route to HTML file
+const path = require("path");
+
+// Serve static files
+app.use(express.static(path.join(__dirname, "public")));
+
+// Base route
 app.get("/", (req, res) => {
-  res.sendFile("index.html", { root: "./public" });
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Generate OTP
